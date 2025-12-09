@@ -1,21 +1,11 @@
 import { getShortcuts } from "../lib/data";
 
 export class Shortcuts {
-  /**
-   * @param {HTMLDivElement} $el
-   */
-  constructor($el) {
-    this.$el = $el;
+  constructor() {
+    /** @type {HTMLDivElement} */
+    this.$el = document.getElementById("shortcuts");
     this.render();
     this.setup();
-  }
-
-  render() {
-    const shortcuts = getShortcuts();
-    this.$el.insertAdjacentHTML(
-      "afterbegin",
-      shortcuts.map(this.renderShortcutItem).join("")
-    );
   }
 
   renderShortcutItem(shortcut) {
@@ -43,11 +33,15 @@ export class Shortcuts {
     `;
   }
 
-  setup() {
-    this.setupShortcutCover();
+  render() {
+    const shortcuts = getShortcuts();
+    this.$el.insertAdjacentHTML(
+      "afterbegin",
+      shortcuts.map(this.renderShortcutItem).join("")
+    );
   }
 
-  setupShortcutCover() {
+  setup() {
     document.querySelectorAll("img[data-cover]").forEach((img) => {
       img.addEventListener("error", () => {
         img.parentElement.dataset.fallback = img.dataset.fallback;
