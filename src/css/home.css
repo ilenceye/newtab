@@ -1,0 +1,127 @@
+/*  */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*  */
+
+:root {
+  --color-bg: #f9fafb;
+  --color-bg-offset: #e5e7eb;
+  --color-bg-card: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #999;
+  --color-brand: #0250bb;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+
+  background-color: var(--color-bg);
+  font-size: 100%;
+
+  padding-top: 360px;
+}
+
+#app {
+  text-align: center;
+}
+
+/* SHORTCUTS */
+
+.shortcuts {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 768px - 1024px - 1280px */
+
+@media (min-width: 768px) {
+  .shortcuts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .shortcuts {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .shortcuts {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+/* SHORTCUT-ITEM */
+
+.shortcut {
+  width: 8rem;
+  padding: 1.25rem 1.25rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+
+  &:hover {
+    background-color: var(--color-bg-offset);
+  }
+}
+
+a.shortcut {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.tile {
+  background-color: var(--color-bg-card);
+  width: 88px;
+  height: 88px;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shortcut__cover-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+}
+
+.shortcut__cover-wrapper[data-fallback] {
+  background-color: var(--color-text-secondary);
+  border-radius: 0.5rem;
+
+  & .shortcut__cover {
+    display: none;
+  }
+
+  &::before {
+    content: attr(data-fallback);
+    color: var(--color-bg-card);
+    font-size: 64px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transform: rotate(-10deg);
+  }
+}
+
+.shortcut__cover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+  pointer-events: none;
+}
+
+.shortcut__title {
+  font-size: 0.75rem;
+
+  margin-top: 0.5rem;
+}

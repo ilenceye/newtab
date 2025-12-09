@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add - Newtab</title>
+  </head>
+  <body>
+    <div class="bookmarklet">
+      <h1 class="bookmarklet__title">添加书签</h1>
+      <form id="bookmarklet__form" class="bookmarklet__form">
+        <div class="bookmarklet__field">
+          <label class="bookmarklet__label" for="url">网址</label>
+          <input
+            class="bookmarklet__input"
+            type="url"
+            id="url"
+            name="url"
+            required
+          />
+        </div>
+        <div class="bookmarklet__field">
+          <label class="bookmarklet__label" for="title">标题</label>
+          <input
+            class="bookmarklet__input"
+            type="text"
+            id="title"
+            name="title"
+            required
+          />
+        </div>
+        <button class="bookmarklet__button" type="submit">保存</button>
+      </form>
+    </div>
+    <script type="module" src="/src/js/bookmarklet.js"></script>
+  </body>
+</html>
