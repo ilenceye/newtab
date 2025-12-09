@@ -11,9 +11,11 @@
   --color-bg: #f9fafb;
   --color-bg-offset: #e5e7eb;
   --color-bg-card: #ffffff;
+  --color-bg-card-offset: #f2f2f2;
   --color-text: #000000;
   --color-text-secondary: #999;
   --color-brand: #0250bb;
+  --color-border: #ccc;
 }
 
 body {
@@ -63,13 +65,14 @@ body {
   padding: 1.25rem 1.25rem 1rem;
   border-radius: 0.5rem;
   text-align: center;
+  position: relative;
 
   &:hover {
     background-color: var(--color-bg-offset);
   }
 }
 
-a.shortcut {
+.shortcut a {
   color: var(--color-text);
   text-decoration: none;
 }
@@ -124,4 +127,54 @@ a.shortcut {
   font-size: 0.75rem;
 
   margin-top: 0.5rem;
+}
+
+/* SHORTCUT_DROPDOWN */
+
+.shortcut-dropdown {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  visibility: hidden;
+}
+
+div:has(> .shortcut-dropdown__item) {
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  background-color: var(--color-bg-card);
+  overflow: hidden;
+}
+
+.shortcut-dropdown__heading {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.shortcut-dropdown__item {
+  border: none;
+  background-color: var(--color-bg-card);
+  padding: 0.25rem 0.5rem;
+  width: 10rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-bg-card-offset);
+  }
+}
+
+.shortcut:has(.shortcut-dropdown__heading.open) {
+  background-color: var(--color-bg-offset);
+}
+
+.shortcut:hover .shortcut-dropdown {
+  visibility: visible;
+}
+
+.shortcut-dropdown:has(.shortcut-dropdown__heading.open) {
+  visibility: visible;
 }

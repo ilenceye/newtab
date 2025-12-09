@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "@vanillawc/wc-menu-wrapper": "^0.0.5"
   }
 }
