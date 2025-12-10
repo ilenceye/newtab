@@ -1,4 +1,4 @@
-import "../css/home.css";
+import "./styles/index.css";
 import "@vanillawc/wc-menu-wrapper";
 import { Shortcuts } from "./components/shortcuts";
 import { BookmarkFolderSelect } from "./components/bookmark-folder-select";
