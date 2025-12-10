@@ -1,11 +1,11 @@
-import { deleteShortcut, getShortcuts } from "../lib/data";
+import { deleteBookmark, getBookmarksFromFolder } from "../lib/chrome";
+import { getSelectedFolderId } from "../lib/data";
 
 export class Shortcuts {
   constructor() {
     /** @type {HTMLDivElement} */
     this.$el = document.getElementById("shortcuts");
     this.render();
-    this.setup();
   }
 
   renderShortcutDropdown() {
@@ -17,6 +17,7 @@ export class Shortcuts {
     `;
   }
 
+  /** @param {import('../lib/data').Shortcut} shortcut */
   renderShortcutItem(shortcut) {
     return /*html*/ `
       <div class="shortcut" data-id="${shortcut.id}">
@@ -41,14 +42,27 @@ export class Shortcuts {
     `;
   }
 
-  render() {
-    const shortcuts = getShortcuts();
-    this.$el.innerHTML = shortcuts
-      .map(this.renderShortcutItem.bind(this))
-      .join("");
+  async render() {
+    const selectedFolderId = getSelectedFolderId();
+
+    if (!selectedFolderId) return;
+
+    const bookmarks = await getBookmarksFromFolder(selectedFolderId);
+    const shortcuts = bookmarks.map(({ id, title, url }) => ({
+      id,
+      title,
+      url,
+    }));
+
+    if (shortcuts.length > 0) {
+      this.$el.innerHTML = shortcuts
+        .map(this.renderShortcutItem.bind(this))
+        .join("");
+      this.setup();
+    }
   }
 
-  handleShortchutDropdownItemClick(event) {
+  async handleShortchutDropdownItemClick(event) {
     if (!event.target.classList.contains("shortcut-dropdown__item")) return;
 
     const action = event.target.dataset.action;
@@ -57,13 +71,13 @@ export class Shortcuts {
       case "delete":
         const shortcutItemEl = event.target.closest(".shortcut");
         const shortcutId = shortcutItemEl.dataset.id;
-        deleteShortcut(shortcutId);
+        await deleteBookmark(shortcutId);
         shortcutItemEl.remove();
     }
   }
 
   setup() {
-    document.querySelectorAll("img[data-cover]").forEach((img) => {
+    this.$el.querySelectorAll("img[data-cover]").forEach((img) => {
       img.addEventListener("error", () => {
         img.parentElement.dataset.fallback = img.dataset.fallback;
       });

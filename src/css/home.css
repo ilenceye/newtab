@@ -1,9 +1,5 @@
-/*  */
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+@import "./reset.css";
+@import "./utilities.css";
 
 /*  */
 
@@ -27,7 +23,26 @@ body {
   padding-top: 360px;
 }
 
-#app {
+select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  padding: 0.275rem 0.5rem;
+  border-radius: 0.275rem;
+  cursor: pointer;
+}
+
+/* SETTINGS */
+
+.settings {
+  position: fixed;
+  top: 4rem;
+  right: 4rem;
+  width: 12rem;
+}
+
+/* BOOKMARK_FOLDER_SELECT */
+
+main {
   text-align: center;
 }
 

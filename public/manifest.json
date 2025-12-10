@@ -1,0 +1,14 @@
+{
+  "name": "newtab",
+  "version": "0.0.0",
+  "manifest_version": 3,
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["bookmarks"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "newtab@ilnce.com"
+    }
+  }
+}
