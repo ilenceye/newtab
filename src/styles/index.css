@@ -140,8 +140,8 @@ main {
 
 .shortcut__title {
   font-size: 0.75rem;
-
   margin-top: 0.5rem;
+  user-select: none;
 }
 
 /* SHORTCUT_DROPDOWN */
