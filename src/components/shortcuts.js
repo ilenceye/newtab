@@ -27,7 +27,9 @@ export class Shortcuts {
             <div class="shortcut__cover-wrapper">
               <img
                 class="shortcut__cover"
-                src="https://favicon.im/${new URL(shortcut.url).hostname}"
+                src="https://favicon.im/${
+                  new URL(shortcut.url).hostname
+                }?larger=true"
                 alt="Favicon for ${shortcut.title}"
                 data-cover
                 data-fallback="${new URL(shortcut.url).hostname.charAt(0)}"
