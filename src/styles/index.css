@@ -16,11 +16,8 @@
 
 body {
   font-family: system-ui, sans-serif;
-
   background-color: var(--color-bg);
   font-size: 100%;
-
-  padding-top: 360px;
 }
 
 select {
@@ -44,6 +41,7 @@ select {
 
 main {
   text-align: center;
+  margin-top: clamp(10rem, 39.06vw - 8.75rem, 22.5rem);
 }
 
 /* SHORTCUTS */
